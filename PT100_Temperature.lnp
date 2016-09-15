@@ -1,0 +1,9 @@
+"STARTUP.obj",
+"warning.obj",
+"main.obj",
+"keyport.obj",
+"i2c.obj",
+"display.obj",
+"delay.obj" 
+TO "热敏电阻测试数码管显示" 
+RAMSIZE(256) 

@@ -1,0 +1,53 @@
+C51 COMPILER V8.05a   WARNING                                                              05/04/2013 15:39:49 PAGE 1   
+
+
+C51 COMPILER V8.05a, COMPILATION OF MODULE WARNING
+OBJECT MODULE PLACED IN warning.OBJ
+COMPILER INVOKED BY: D:\Program Files\Keil\C51\BIN\C51.EXE warning.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "delay.h"
+   2          #include "keyport.h"
+   3          #include "keyport.h"
+   4          #include "i2c.h"
+   5          sbit BEEP=P2^4;
+   6          
+   7          void warn(double T)
+   8          {
+   9   1        
+  10   1       
+  11   1         if((T>=tempH)||(T<=tempL))
+  12   1         {
+  13   2              unsigned int i;
+  14   2          for(i=0;i<200;i++)
+  15   2            {
+  16   3            DelayUs2x(200); 
+  17   3                BEEP=!BEEP;
+  18   3                }
+  19   2                BEEP=0;//防止一直给喇叭通电造成损坏
+  20   2          for(i=0;i<200;i++)
+  21   2            {
+  22   3            DelayMs(1);  
+  23   3                }
+  24   2                BEEP=1;
+  25   2         }
+  26   1         else
+  27   1         {
+  28   2         BEEP=0;
+  29   2         }       
+  30   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    112    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
